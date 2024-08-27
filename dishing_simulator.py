@@ -13,6 +13,7 @@ def giveGold():
     gold += value
 
 gold = 0
+gems = 0
 rarityMultiplier = 1
 goldMultiplier = 1
 baitMultiplier = 1
@@ -20,11 +21,8 @@ baitMultiplier = 1
 clear()
 
 while True:
-    input("Press enter to cast your line. (You have " + str(gold) + " gold) "):
-    command = input("Enter a command (bait, shop, exit): ")
-    
+    input("Press enter to cast your line. (You have " + str(gold) + " gold) ")
         
-
     clear()
 
     rarity = random.random() * 100
@@ -80,6 +78,10 @@ while True:
         elif rarity >= 0.078125 * rarityMultiplier: # Eternal
             print("You got an " + Fore.LIGHTCYAN_EX + "eternal!" + Fore.WHITE)
             value = random.randint(10001, 20000)
-    
+    if random.random() <= 1:
+        treasure = random.randint(2, 5)
+        print(Fore.LIGHTGREEN_EX + "You found a treasure!" + Fore.GREEN + "(" + str(treasure) + " gems)" + Fore.WHITE)
+        gems += treasure
+        
     
     giveGold()
