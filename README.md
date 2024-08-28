@@ -1,28 +1,23 @@
-# dishing-simulator
+# Dishing Simulator
 
 ## Ideas
-Ideas for game:
 
-Gold:
-✨ gain gold by fish rarity level
-🎒 use gold to upgrade your resources
+### Gold
+- ✨ Gain gold by fish rarity level
+- 🎒 Use gold to upgrade your resources
 
-Shop:
-🎣Fishing rod
-🪱bait
-🧈gold multiplyer
+### Shop
+- 🎣 Fishing rod
+- 🪱 Bait
+- 🧈 Gold multiplier
 
+### Gem currency
+- 💎 Gem currency
 
-💎Gem currency:
+### Dimension
+- 🌏 World
+- 🌋 Vulcan
 
-Dimention:
-🌏world
-🌋Volcano
-
-
-
-Long term goals:
-Backpack?
-Daily loginn?
-
-- 
+## Long term goals
+- Backpack storage
+- Daily login

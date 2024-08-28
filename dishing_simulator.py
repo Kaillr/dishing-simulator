@@ -11,6 +11,7 @@ def giveGold():
     global gold
     print("You got " + str(value) + " gold!")
     gold += value
+    fishing()
 
 gold = 0
 gems = 0
@@ -20,7 +21,14 @@ baitMultiplier = 1
 
 clear()
 
-while True:
+def fishing():
+    global value
+    global gems
+    global rarityMultiplier
+    global goldMultiplier
+    global baitMultiplier
+    global gold
+    
     input("Press enter to cast your line. (You have " + str(gold) + " gold) ")
         
     clear()
@@ -39,19 +47,19 @@ while True:
         print(Fore.RED + "The fish escaped!" + Fore.WHITE)
         value = 0
     else:
-        if rarity >= 120 * rarityMultiplier: # Common
-            print("You got a " + Fore.RED + "common!" + Fore.WHITE)
+        if rarity >= 30 * rarityMultiplier: # Common
+            print("You got a common!")
             value = random.randint(1, 20)
             
         elif rarity >= 20 * rarityMultiplier: # Rare
             print("You got a " + Fore.GREEN + "rare!" + Fore.WHITE) 
             value = random.randint(21, 50)
             
-        elif rarity >= 10 * rarityMultiplier: # Epic
+        elif rarity >= 12 * rarityMultiplier: # Epic
             print("You got an " + Fore.BLUE + "epic!" + Fore.WHITE)
             value = random.randint(51, 100)
             
-        elif rarity >= 5 * rarityMultiplier: # Legendary
+        elif rarity >= 7 * rarityMultiplier: # Legendary
             print("You got a " + Fore.MAGENTA + "legendary!" + Fore.WHITE)
             value = random.randint(101, 200)
             
@@ -78,10 +86,12 @@ while True:
         elif rarity >= 0.078125 * rarityMultiplier: # Eternal
             print("You got an " + Fore.LIGHTCYAN_EX + "eternal!" + Fore.WHITE)
             value = random.randint(10001, 20000)
-    if random.random() <= 1:
+    if random.random() <= 0.01:
         treasure = random.randint(2, 5)
         print(Fore.LIGHTGREEN_EX + "You found a treasure!" + Fore.GREEN + "(" + str(treasure) + " gems)" + Fore.WHITE)
-        gems += treasure
+        gems += int(treasure)
         
     
     giveGold()
+
+fishing()
