@@ -107,6 +107,10 @@ def giveGold():
 def menuSelect(command):
     if command == "shop" or command == "store":
         shop()
+    elif command == "rod":
+        upgradeRod()
+    elif command == "bait":
+        upgradeBait()
     elif command == "stats" or command == "stat" or command == "statistics":
         stats()
     elif command == "restart" or command == "relaunch" or command == "r":
@@ -156,18 +160,18 @@ def upgradeBait():
 
 def upgradeRod():
         clear()
-        print(Fore.LIGHTYELLOW_EX + "**************************************************************************************" + Fore.WHITE)
+        print("-------------------------------------")
         print("Welcome to the Fishing Rod Shop!" + "\n")
-        print("1." + " Adventures Fishingrod: " + Fore.LIGHTYELLOW_EX + (" (Owned)" if rodLvl >= 1 else " (750 gold)"))
-        print("2." +  " Adventures Fishingrod: " + Fore.LIGHTYELLOW_EX )
-        print("3." + Fore.LIGHTRED_EX + " AquaStrike:            " + Fore.LIGHTYELLOW_EX + + (" (Owned)" if rodLvl >= 3 else " (10000 gold)"))
+        print("1." + Fore.LIGHTGREEN_EX + " Adventures Fishingrod: " + (" (Owned)" if rodLvl >= 1 else " (750 gold)") + Fore.WHITE)
+        print("2." + Fore.LIGHTBLUE_EX + " steel Fishingrod:     " + (" (Owned)" if rodLvl >= 2 else " (3000 gold)" + Fore.WHITE))
+        print("3." + Fore.LIGHTRED_EX + " AquaStrike:          " + Fore.LIGHTYELLOW_EX + (" (Owned)" if rodLvl >= 3 else " (10000 gold)") + Fore.WHITE)
+        print("-------------------------------------")
         print("Press enter to go back to the fishies")
-        print(Fore.LIGHTYELLOW_EX + "**************************************************************************************" + Fore.WHITE)
         command = input()
         buyRod(command)
         
 def buyRod(command):
-    global gold, rodLvl
+    global gold, rodLvl, rarityMultiplier
     
     if command == "":
         shop()
@@ -175,7 +179,9 @@ def buyRod(command):
         if rodLvl < 1:
             if gold >= 750:
                 gold -= 750
+                rarityMultiplier = 1.1
                 rodLvl = 1
+                save_game()
                 print( Fore.GREEN + " Succsess!" + Fore.WHITE + " Thank you for Purching the Adventures Fishingrod!")
             else:
                 print( Fore.RED + "You do not have enough gold!")
@@ -288,39 +294,42 @@ def fishing():
     totalCasts += 1
 
     print("Waiting...")
-    time.sleep(random.randint(2, 5))
-    clear()
-
+    time.sleep(random.randint(3, 6) / (baitMultiplier))
+    
     print("Oh..?")
     time.sleep(2)
     clear()
+    
+    print("Reeling...")
+    time.sleep(random.randint(6, 10) / (rodLvl / 5 + 1))
+    clear()
 
-    if random.random() <= 0/3 * baitMultiplier:
+    if random.random() <= 1/3 * baitMultiplier:
         fishescape_index = random.choice(["Giant Sea Bass", "Splitfin", "Sellable Laptop", "Stingray", "Goblin Shark", "Zebra Pleco", "Smalltooth Sawfish", "Snapper", "Sunfish", "Red Hand Fish", "Plastic Bag", "Bonefish", "Coalfish", "Scrap", "Bottle", "Cod"])
         escaped = random.choice([" escaped", " got wrecked", " sailed away", " vanished", " disappeared"])
         print(Fore.RED + fishescape_index + escaped + Fore.WHITE)
         value = 0
     else:
         rarity = random.random() * 100
-        if rarity < 0.1 * rarityMultiplier and rodLvl >= 0: # Eternal
+        if rarity < 0.1 * rarityMultiplier and rodLvl >= 4: # Eternal
             eternal_index = random.choice(["Giant sea bass"])
             print("You got an " + Fore.LIGHTYELLOW_EX + "Eternal " + Fore.WHITE + eternal_index)
             eternal += 1
             value = random.randint(351, 550)
             
-        elif rarity <= 0.4 * rarityMultiplier and rodLvl >= 0: # Godly
+        elif rarity <= 0.4 * rarityMultiplier and rodLvl >= 3: # Godly
             Godly_index = random.choice(["Splitfin", "sellable laptop", "Stingray"])
             print("You got a " + Fore.YELLOW + "Godly " + Fore.WHITE + Godly_index)
             godly += 1
             value = random.randint(231, 350)
             
-        elif rarity <= 1.9 * rarityMultiplier and rodLvl >= 0: # Mythical
+        elif rarity <= 1.9 * rarityMultiplier and rodLvl >= 2: # Mythical
             Mythical_index = random.choice(["goblin shark!", "zebra pleco!", "Smalltooth Sawfish!"])
             print("You got a " + Fore.LIGHTBLUE_EX + "Mythical " + Fore.WHITE + Mythical_index)
             mythical += 1
             value = random.randint(151, 230)
             
-        elif rarity <= 5 * rarityMultiplier and rodLvl >= 0: # Legendary
+        elif rarity <= 5 * rarityMultiplier and rodLvl >= 1: # Legendary
             Legendary_index = random.choice(["snapper!", "sunfish!", "red hand fish!"])
             print("You got a " + Fore.MAGENTA + "Legendary " + Legendary_index +  Fore.WHITE)
             legendary += 1

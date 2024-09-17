@@ -3,16 +3,16 @@
 ## Ideas:
 
 ### Gold
-- ✨ Gain gold by fish rarity level
-- 🎒 Use gold to upgrade your resources
+- ✨ Gain gold by fish rarity level ✅
+- 🎒 Use gold to upgrade your resources ✅?
 
 ### Shop
-- 🎣 Fishing rod
-- 🪱 Bait
+- 🎣 Fishing rod ✅?
+- 🪱 Bait 
 - 🧈 Gold multiplier
 
 ### Gem currency
-- 💎 Gem currency
+- 💎 Gem currency ✅
 - 🏳️‍⚧️ celestial rarity
 
 ### Dimension
@@ -34,9 +34,9 @@
 (LYe)eternal 0.1%     (0-0.1)
 
 ## rarity chances rod 0
-(W)common 70%         (35-100)
-(Bl)rare 25%          (12-35)
-(Pu)epic 5%           (5-12)
+(W)common 60%         (35-100)
+(Bl)rare 30,7%          (12-35)
+(Pu)epic 9,3%           (5-12)
 
 ## rarity chances rod 1
 (W)common 62%         (35-100)
